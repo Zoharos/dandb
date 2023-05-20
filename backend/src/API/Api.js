@@ -1,13 +1,15 @@
 const axios = require('axios').default;
 const express = require('express');
 const router = express.Router();
-const { getURLandTitleArray } = require('../utils/utils');
+const { getURLandTitleArray, getPageArray } = require('../utils/utils');
 
 router.get('/', async (req, res) => {
   try {
-    const { q } = req.query;
+    const { q, p } = req.query;
     const { data } = await axios.get(`http://api.duckduckgo.com/?q=${q}&format=json`);
-    res.send(getURLandTitleArray(data.RelatedTopics))
+    const URLandTitleArray = getURLandTitleArray(data.RelatedTopics);
+    console.log(getPageArray(URLandTitleArray, parseInt(p)));
+    res.send(getPageArray(URLandTitleArray, parseInt(p)));
   } catch(e) {
     res.status(500).send("something went wrong");
   }
