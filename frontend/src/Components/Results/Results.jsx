@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TextField from '../TextField/Textfield';
 
 function Results({ data, handleNextPage, handlePrevPage, pages, page }) {
-    console.log(data);
+
     const [results, setResults] = useState(data);
     const [highlightedTerm, setHighlightedTerm] = useState('');
 
