@@ -3,12 +3,11 @@
 function getURLandTitleArray(arr) {
     const resultArray = []
     arr.forEach((item) => {
-        console.log(item);
         if(item.Name) {
-            resultArray.push(...item.Topics.map((subItem) => ({ url: subItem.FirstURL, title: subItem.Text, item })));
+            resultArray.push(...item.Topics.map((subItem) => ({ url: subItem.FirstURL, title: subItem.Text })));
         }
         else
-            resultArray.push({ url: item.FirstURL, title: item.Text, item });
+            resultArray.push({ url: item.FirstURL, title: item.Text });
     })
     return resultArray;
 }
